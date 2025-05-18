@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - Innovate</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-logo">
+        <h1>Innovate</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="communities.html"><i class="fas fa-users"></i> Communities</a></li>
+        <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+        <li class="active"><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+      </ul>
+      <div class="nav-profile">
+        <a href="profile.html" id="profile-link">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <span class="profile-name">Loading...</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Search Section -->
+      <section class="search-section">
+        <form id="search-form">
+          <div class="search-input-container">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" placeholder="Search for users, posts, or communities...">
+          </div>
+          <div class="search-type">
+            <div class="search-type-tabs">
+              <button type="button" class="tab-btn active" data-type="all">All</button>
+              <button type="button" class="tab-btn" data-type="users">Users</button>
+              <button type="button" class="tab-btn" data-type="posts">Posts</button>
+              <button type="button" class="tab-btn" data-type="communities">Communities</button>
+            </div>
+          </div>
+        </form>
+      </section>
+      
+      <!-- Search Results -->
+      <section class="search-results">
+        <!-- Initial state -->
+        <div id="initial-state" class="initial-state">
+          <div class="initial-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Search for People, Posts, and Communities</h3>
+          <p>Enter keywords in the search box above to find content across the platform</p>
+        </div>
+        
+        <!-- No results state (hidden initially) -->
+        <div id="no-results" class="no-results hidden">
+          <div class="no-results-icon">
+            <i class="fas fa-search-minus"></i>
+          </div>
+          <h3>No results found</h3>
+          <p>Try different keywords or check your spelling</p>
+        </div>
+        
+        <!-- Loading state (hidden initially) -->
+        <div id="loading-results" class="loading-results hidden">
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i> Searching...
+          </div>
+        </div>
+        
+        <!-- Results container (hidden initially) -->
+        <div id="results-container" class="results-container hidden">
+          <!-- Users section -->
+          <div id="users-section" class="results-section">
+            <h3>Users</h3>
+            <div id="users-results" class="users-results"></div>
+            <button id="more-users" class="btn-text view-more hidden">View more users</button>
+          </div>
+          
+          <!-- Posts section -->
+          <div id="posts-section" class="results-section">
+            <h3>Posts</h3>
+            <div id="posts-results" class="posts-results"></div>
+            <button id="more-posts" class="btn-text view-more hidden">View more posts</button>
+          </div>
+          
+          <!-- Communities section -->
+          <div id="communities-section" class="results-section">
+            <h3>Communities</h3>
+            <div id="communities-results" class="communities-results"></div>
+            <button id="more-communities" class="btn-text view-more hidden">View more communities</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- User Card Template -->
+  <template id="user-card-template">
+    <div class="user-card">
+      <div class="user-avatar">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="user-info">
+        <h4 class="user-name"></h4>
+        <p class="user-bio"></p>
+      </div>
+      <button class="btn-outline btn-follow">Follow</button>
+    </div>
+  </template>
+
+  <!-- Post Template -->
+  <template id="post-template">
+    <div class="post">
+      <div class="post-header">
+        <div class="post-author">
+          <div class="author-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="author-info">
+            <h4 class="author-name"></h4>
+            <span class="post-time"></span>
+          </div>
+        </div>
+      </div>
+      <div class="post-content">
+        <p class="post-text"></p>
+        <div class="post-image-container"></div>
+      </div>
+      <div class="post-stats">
+        <span class="interested-count"></span>
+      </div>
+    </div>
+  </template>
+  
+  <!-- Community Card Template -->
+  <template id="community-card-template">
+    <div class="community-card">
+      <div class="community-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="community-details">
+        <h4 class="community-name"></h4>
+        <p class="community-description"></p>
+        <div class="community-stats">
+          <span class="member-count"><i class="fas fa-user"></i> <span class="count"></span> members</span>
+        </div>
+      </div>
+      <button class="btn-outline community-btn"></button>
+    </div>
+  </template>
+
+  <script src="js/search.js"></script>
+  <script src="js/header.js"></script>
+</body>
+</html>

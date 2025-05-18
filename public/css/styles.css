@@ -1,0 +1,362 @@
+/* Base styles and variables */
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #5cb85c;
+  --danger-color: #d9534f;
+  --warning-color: #f0ad4e;
+  --info-color: #5bc0de;
+  --success-color: #5cb85c;
+  --text-color: #333333;
+  --light-text: #777777;
+  --background-color: #f5f8fa;
+  --card-color: #ffffff;
+  --border-color: #e1e8ed;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+/* App container */
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navigation */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: var(--card-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 15px 20px;
+}
+
+.nav-logo h1 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 5px;
+}
+
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 15px;
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+}
+
+.nav-links li a:hover,
+.nav-links li.active a {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.nav-links li.active a {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.nav-profile {
+  position: relative;
+}
+
+.nav-profile a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.nav-profile a:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.profile-avatar i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Profile dropdown styles */
+.profile-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--card-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  z-index: 1000;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown li {
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.profile-dropdown li a:hover {
+  background-color: var(--background-color);
+}
+
+.profile-dropdown li:first-child a {
+  border-radius: 8px 8px 0 0;
+}
+
+.profile-dropdown li:last-child a {
+  border-radius: 0 0 8px 8px;
+}
+
+/* Notification bell styles */
+.notification-bell {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: var(--danger-color);
+  color: white;
+  font-size: 0.7rem;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Buttons */
+.btn-primary, .btn-outline, .btn-text, .btn-danger {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3a80d2;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.btn-text {
+  background-color: transparent;
+  color: var(--primary-color);
+  padding: 8px;
+}
+
+.btn-text:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: var(--card-color);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--light-text);
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input, 
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 15px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Hide elements */
+.hidden {
+  display: none !important;
+}
+
+/* Logout button */
+.logout-btn {
+  background-color: var(--background-color);
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logout-btn:hover {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 10px;
+  }
+  
+  .main-nav {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .nav-links {
+    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-bottom: 5px;
+  }
+  
+  .nav-links li a {
+    padding: 8px;
+  }
+  
+  .nav-links li a span {
+    display: none;
+  }
+  
+  .nav-profile {
+    align-self: flex-end;
+  }
+}

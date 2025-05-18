@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications - Innovate</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/notifications.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-logo">
+        <h1>Innovate</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="communities.html"><i class="fas fa-users"></i> Communities</a></li>
+        <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+      </ul>
+      <div class="nav-profile">
+        <a href="profile.html" id="profile-link">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <span class="profile-name">Loading...</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Notifications Header -->
+      <div class="notifications-header">
+        <h2>Notifications</h2>
+        <div class="notifications-actions">
+          <button id="mark-all-read" class="btn-outline"><i class="fas fa-check-double"></i> Mark All as Read</button>
+          <button id="clear-all" class="btn-outline"><i class="fas fa-trash"></i> Clear All</button>
+        </div>
+      </div>
+      
+      <!-- Notifications List -->
+      <div class="notifications-container">
+        <div id="notifications-list">
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i> Loading notifications...
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Notification Template -->
+  <template id="notification-template">
+    <div class="notification-item">
+      <div class="notification-icon">
+        <i class="fas fa-bell"></i>
+      </div>
+      <div class="notification-content">
+        <p class="notification-text"></p>
+        <span class="notification-time"></span>
+      </div>
+      <div class="notification-actions">
+        <button class="btn-text mark-read-btn" title="Mark as Read"><i class="fas fa-check"></i></button>
+        <button class="btn-text delete-btn" title="Delete"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+  </template>
+
+  <script src="js/notifications.js"></script>
+  <script src="js/header.js"></script>
+</body>
+</html>

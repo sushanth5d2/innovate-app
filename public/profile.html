@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Innovate</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-logo">
+        <h1>Innovate</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="communities.html"><i class="fas fa-users"></i> Communities</a></li>
+        <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+      </ul>
+      <div class="nav-profile">
+        <a href="profile.html" id="profile-link" class="active">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <span class="profile-name">Loading...</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Profile Header -->
+      <section class="profile-header">
+        <div class="profile-avatar-large">
+          <i class="fas fa-user-circle"></i>
+        </div>
+        <div class="profile-info">
+          <h2 id="profile-username">Loading...</h2>
+          <div class="profile-stats">
+            <span id="post-count"><i class="fas fa-file-alt"></i> 0 posts</span>
+            <span id="following-count"><i class="fas fa-user-friends"></i> 0 following</span>
+            <span id="follower-count"><i class="fas fa-users"></i> 0 followers</span>
+          </div>
+        </div>
+        <div class="profile-actions" id="profile-actions">
+          <!-- Actions will be added dynamically -->
+        </div>
+      </section>
+
+      <!-- Profile Tabs -->
+      <section class="profile-tabs">
+        <div class="tab-header">
+          <button class="tab-btn active" data-tab="about">About</button>
+          <button class="tab-btn" data-tab="posts">Posts</button>
+          <button class="tab-btn" data-tab="following">Following</button>
+          <button class="tab-btn" data-tab="followers">Followers</button>
+        </div>
+        
+        <!-- About Tab -->
+        <div id="about-tab" class="tab-content active">
+          <div class="profile-about">
+            <div class="about-section">
+              <h3>Bio</h3>
+              <p id="profile-bio">No bio available</p>
+            </div>
+            
+            <div class="about-section">
+              <h3>Skills</h3>
+              <div id="profile-skills" class="tag-container">
+                <p>No skills listed</p>
+              </div>
+            </div>
+            
+            <div class="about-section">
+              <h3>Interests</h3>
+              <div id="profile-interests" class="tag-container">
+                <p>No interests listed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Posts Tab -->
+        <div id="posts-tab" class="tab-content">
+          <div id="profile-posts">
+            <div class="loading-indicator">
+              <i class="fas fa-spinner fa-spin"></i> Loading posts...
+            </div>
+          </div>
+        </div>
+        
+        <!-- Following Tab -->
+        <div id="following-tab" class="tab-content">
+          <div id="profile-following">
+            <div class="loading-indicator">
+              <i class="fas fa-spinner fa-spin"></i> Loading following...
+            </div>
+          </div>
+        </div>
+        
+        <!-- Followers Tab -->
+        <div id="followers-tab" class="tab-content">
+          <div id="profile-followers">
+            <div class="loading-indicator">
+              <i class="fas fa-spinner fa-spin"></i> Loading followers...
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Edit Profile Modal -->
+    <div id="edit-profile-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Edit Profile</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="edit-profile-form">
+          <div class="form-group">
+            <label for="edit-bio">Bio</label>
+            <textarea id="edit-bio" rows="4"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="edit-skills">Skills (comma-separated)</label>
+            <input type="text" id="edit-skills">
+          </div>
+          <div class="form-group">
+            <label for="edit-interests">Interests (comma-separated)</label>
+            <input type="text" id="edit-interests">
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline cancel-modal">Cancel</button>
+            <button type="submit" class="btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- User Action Menu -->
+    <div id="user-action-menu" class="dropdown-menu hidden">
+      <div class="menu-item" id="menu-message">
+        <i class="fas fa-envelope"></i> Message
+      </div>
+      <div class="menu-item" id="menu-block">
+        <i class="fas fa-ban"></i> Block
+      </div>
+      <div class="menu-item" id="menu-report">
+        <i class="fas fa-flag"></i> Report
+      </div>
+      <div class="menu-item" id="menu-mute">
+        <i class="fas fa-volume-mute"></i> Mute
+      </div>
+    </div>
+  </div>
+
+  <!-- Post Template -->
+  <template id="post-template">
+    <div class="post">
+      <div class="post-header">
+        <div class="post-author">
+          <div class="author-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="author-info">
+            <h4 class="author-name"></h4>
+            <span class="post-time"></span>
+          </div>
+        </div>
+        <div class="post-options">
+          <button class="post-menu-btn">
+            <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <div class="post-menu-dropdown hidden">
+            <!-- Menu options will be added dynamically -->
+          </div>
+        </div>
+      </div>
+      <div class="post-content">
+        <p class="post-text"></p>
+        <div class="post-image-container"></div>
+      </div>
+      <div class="post-actions">
+        <button class="btn-interest"><i class="fas fa-star"></i> I'm Interested</button>
+        <button class="btn-contact"><i class="fas fa-comment"></i> Contact Me</button>
+        <button class="btn-share"><i class="fas fa-share"></i> Share</button>
+      </div>
+      <div class="post-stats">
+        <span class="interested-count">0 interested</span>
+      </div>
+    </div>
+  </template>
+
+  <!-- User Card Template -->
+  <template id="user-card-template">
+    <div class="user-card">
+      <div class="user-avatar">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <div class="user-info">
+        <h4 class="user-name"></h4>
+        <p class="user-bio"></p>
+      </div>
+      <button class="btn-outline btn-follow">Follow</button>
+    </div>
+  </template>
+
+  <script src="js/profile.js"></script>
+  <script src="js/header.js"></script>
+</body>
+</html>

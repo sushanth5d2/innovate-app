@@ -1,0 +1,228 @@
+/* Profile Page Specific Styles */
+
+.profile-header {
+  background-color: var(--card-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.profile-avatar-large {
+  font-size: 5rem;
+  color: var(--primary-color);
+}
+
+.profile-info {
+  flex-grow: 1;
+}
+
+.profile-info h2 {
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 15px;
+  color: var(--light-text);
+}
+
+.profile-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-tabs {
+  background-color: var(--card-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.tab-header {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  color: var(--light-text);
+}
+
+.tab-btn:hover {
+  background-color: rgba(74, 144, 226, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.tab-content {
+  display: none;
+  padding: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* About Tab */
+.profile-about {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-section h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  background-color: rgba(74, 144, 226, 0.1);
+  color: var(--primary-color);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Posts Tab */
+#profile-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Following/Followers Tabs */
+#profile-following, #profile-followers {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+}
+
+.user-info {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.user-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-bio {
+  color: var(--light-text);
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-follow.following {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  background-color: var(--card-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.menu-item {
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-item:hover {
+  background-color: var(--background-color);
+}
+
+.menu-item i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .profile-info {
+    width: 100%;
+  }
+  
+  .profile-stats {
+    justify-content: center;
+  }
+  
+  .profile-actions {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .tab-header {
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    flex: auto;
+    min-width: 50%;
+  }
+  
+  #profile-following, #profile-followers {
+    grid-template-columns: 1fr;
+  }
+}

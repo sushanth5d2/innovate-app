@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Innovate</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-logo">
+        <h1>Innovate</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="communities.html"><i class="fas fa-users"></i> Communities</a></li>
+        <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+      </ul>
+      <div class="nav-profile">
+        <a href="profile.html" id="profile-link">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <span class="profile-name">Loading...</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <h2 class="page-title">Account Settings</h2>
+      
+      <div class="settings-container">
+        <!-- Profile Settings -->
+        <section class="settings-section">
+          <h3>Profile Information</h3>
+          <form id="profile-form">
+            <div class="form-group">
+              <label for="bio">Bio</label>
+              <textarea id="bio" rows="4" placeholder="Tell us about yourself"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills (comma-separated)</label>
+              <input type="text" id="skills" placeholder="E.g. JavaScript, UI Design, Project Management">
+            </div>
+            <div class="form-group">
+              <label for="interests">Interests (comma-separated)</label>
+              <input type="text" id="interests" placeholder="E.g. AI, Web Development, UX Design">
+            </div>
+            <button type="submit" class="btn-primary">Save Profile</button>
+          </form>
+        </section>
+        
+        <!-- Account Settings -->
+        <section class="settings-section">
+          <h3>Account</h3>
+          <form id="account-form">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" disabled>
+              <p class="form-hint">Email cannot be changed</p>
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" disabled>
+              <p class="form-hint">Username cannot be changed</p>
+            </div>
+          </form>
+        </section>
+        
+        <!-- Password Settings -->
+        <section class="settings-section">
+          <h3>Change Password</h3>
+          <form id="password-form">
+            <div class="form-group">
+              <label for="current-password">Current Password</label>
+              <input type="password" id="current-password" required>
+            </div>
+            <div class="form-group">
+              <label for="new-password">New Password</label>
+              <input type="password" id="new-password" required>
+            </div>
+            <div class="form-group">
+              <label for="confirm-password">Confirm New Password</label>
+              <input type="password" id="confirm-password" required>
+            </div>
+            <button type="submit" class="btn-primary">Change Password</button>
+          </form>
+        </section>
+        
+        <!-- Privacy Settings -->
+        <section class="settings-section">
+          <h3>Privacy</h3>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-email">
+              Show my email to other users
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="show-interests">
+              Show my interests on my profile
+            </label>
+          </div>
+          <button id="save-privacy" class="btn-primary">Save Privacy Settings</button>
+        </section>
+        
+        <!-- Danger Zone -->
+        <section class="settings-section danger-zone">
+          <h3>Danger Zone</h3>
+          <button id="delete-account" class="btn-danger">Delete Account</button>
+          <p class="warning-text">This action cannot be undone. All your data will be permanently deleted.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/settings.js"></script>
+  <script src="js/header.js"></script>
+</body>
+</html>

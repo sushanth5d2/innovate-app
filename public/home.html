@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Innovate</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-logo">
+        <h1>Innovate</h1>
+      </div>
+      <ul class="nav-links">
+        <li class="active"><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li><a href="communities.html"><i class="fas fa-users"></i> Communities</a></li>
+        <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+      </ul>
+      <div class="nav-profile">
+        <a href="profile.html" id="profile-link">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <span class="profile-name">Loading...</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Create Post Section -->
+      <section class="create-post-section">
+        <form id="create-post-form">
+          <div class="form-group">
+            <textarea id="post-content" placeholder="What would you like to share with the community?" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="image-upload-container">
+              <label for="post-image" class="image-upload-label">
+                <i class="fas fa-image"></i> Add Image
+              </label>
+              <input type="file" id="post-image" class="image-upload-input" accept="image/*">
+              <div id="image-preview" class="image-preview hidden">
+                <img id="preview-image" src="" alt="Preview">
+                <button type="button" id="remove-image" class="remove-image-btn"><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="create-post-actions">
+            <button type="submit" class="btn-primary">Post</button>
+          </div>
+        </form>
+      </section>
+      
+      <!-- Posts Filter Section -->
+      <section class="posts-filter-section">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Posts</button>
+          <button class="filter-btn" data-filter="following">Following</button>
+          <button class="filter-btn" data-filter="trending">Trending</button>
+        </div>
+      </section>
+      
+      <!-- Posts Feed Section -->
+      <section class="posts-feed-section">
+        <div id="posts-container"></div>
+      </section>
+    </main>
+    
+    <!-- Post Template -->
+    <template id="post-template">
+      <div class="post">
+        <div class="post-header">
+          <div class="post-author">
+            <div class="author-avatar">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <div class="author-info">
+              <h4 class="author-name"></h4>
+              <span class="post-time"></span>
+            </div>
+          </div>
+          <div class="post-options">
+            <button class="post-menu-btn">
+              <i class="fas fa-ellipsis-h"></i>
+            </button>
+            <div class="post-menu-dropdown hidden">
+              <!-- Menu options will be added dynamically -->
+            </div>
+          </div>
+        </div>
+        <div class="post-content">
+          <p class="post-text"></p>
+          <div class="post-image-container"></div>
+        </div>
+        <div class="post-actions">
+          <button class="btn-interest"><i class="fas fa-star"></i> I'm Interested</button>
+          <button class="btn-contact"><i class="fas fa-comment"></i> Contact Me</button>
+          <button class="btn-share"><i class="fas fa-share"></i> Share</button>
+        </div>
+        <div class="post-stats">
+          <span class="interested-count">0 interested</span>
+        </div>
+      </div>
+    </template>
+
+    <!-- Post Owner Menu Template -->
+    <template id="post-owner-menu-template">
+      <div class="menu-item edit-option">
+        <i class="fas fa-edit"></i> Edit Post
+      </div>
+      <div class="menu-item archive-option">
+        <i class="fas fa-archive"></i> Archive Post
+      </div>
+      <div class="menu-item delete-option">
+        <i class="fas fa-trash"></i> Delete Post
+      </div>
+    </template>
+
+    <!-- Post Viewer Menu Template -->
+    <template id="post-viewer-menu-template">
+      <div class="menu-item reminder-option">
+        <i class="fas fa-bell"></i> Gentle Reminder
+      </div>
+      <div class="menu-item meeting-option">
+        <i class="fas fa-calendar"></i> Instant Meeting
+      </div>
+      <div class="menu-item save-option">
+        <i class="fas fa-bookmark"></i> Save Post
+      </div>
+    </template>
+    
+    <!-- Edit Post Modal -->
+    <div id="edit-post-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Edit Post</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="edit-post-form">
+          <input type="hidden" id="edit-post-id">
+          <div class="form-group">
+            <textarea id="edit-post-content" placeholder="What would you like to share with the community?" required></textarea>
+          </div>
+          <div class="form-group">
+            <div class="image-upload-container">
+              <label for="edit-post-image" class="image-upload-label">
+                <i class="fas fa-image"></i> Change Image
+              </label>
+              <input type="file" id="edit-post-image" class="image-upload-input" accept="image/*">
+              <div id="edit-image-preview" class="image-preview hidden">
+                <img id="edit-preview-image" src="" alt="Preview">
+                <button type="button" id="edit-remove-image" class="remove-image-btn"><i class="fas fa-times"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline cancel-modal">Cancel</button>
+            <button type="submit" class="btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Reminder Modal -->
+    <div id="reminder-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Set Reminder</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="reminder-form">
+          <input type="hidden" id="reminder-post-id">
+          <div class="form-group">
+            <label for="reminder-time">Remind me in:</label>
+            <select id="reminder-time" required>
+              <option value="1">1 hour</option>
+              <option value="3">3 hours</option>
+              <option value="24">1 day</option>
+              <option value="72">3 days</option>
+              <option value="168">1 week</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline cancel-modal">Cancel</button>
+            <button type="submit" class="btn-primary">Set Reminder</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- Meeting Modal -->
+    <div id="meeting-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Schedule Meeting</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="meeting-form">
+          <input type="hidden" id="meeting-post-id">
+          <input type="hidden" id="meeting-with-user">
+          <div class="form-group">
+            <label for="meeting-title">Meeting Title</label>
+            <input type="text" id="meeting-title" required>
+          </div>
+          <div class="form-group">
+            <label for="meeting-time">Date & Time</label>
+            <input type="datetime-local" id="meeting-time" required>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline cancel-modal">Cancel</button>
+            <button type="submit" class="btn-primary">Schedule Meeting</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/home.js"></script>
+  <script src="js/header.js"></script>
+</body>
+</html>

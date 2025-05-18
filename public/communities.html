@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communities - Innovate</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/communities.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <div class="nav-logo">
+        <h1>Innovate</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="home.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="messages.html"><i class="fas fa-envelope"></i> Messages</a></li>
+        <li class="active"><a href="communities.html"><i class="fas fa-users"></i> Communities</a></li>
+        <li><a href="events.html"><i class="fas fa-calendar"></i> Events</a></li>
+        <li><a href="search.html"><i class="fas fa-search"></i> Search</a></li>
+      </ul>
+      <div class="nav-profile">
+        <a href="profile.html" id="profile-link">
+          <div class="profile-avatar">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <span class="profile-name">Loading...</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Communities Header -->
+      <div class="communities-header">
+        <h2>Communities</h2>
+        <div class="communities-actions">
+          <div class="search-container">
+            <input type="text" id="search-communities" placeholder="Search communities...">
+            <i class="fas fa-search"></i>
+          </div>
+          <button id="create-community-btn" class="btn-primary">
+            <i class="fas fa-plus"></i> Create Community
+          </button>
+        </div>
+      </div>
+      
+      <!-- My Communities Section -->
+      <section class="communities-section">
+        <h3>My Communities</h3>
+        <div id="my-communities" class="communities-grid">
+          <!-- My communities will be loaded here -->
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i> Loading communities...
+          </div>
+        </div>
+      </section>
+      
+      <!-- Discover Communities Section -->
+      <section class="communities-section">
+        <h3>Discover Communities</h3>
+        <div id="discover-communities" class="communities-grid">
+          <!-- Discover communities will be loaded here -->
+          <div class="loading-indicator">
+            <i class="fas fa-spinner fa-spin"></i> Loading communities...
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <!-- Create Community Modal -->
+    <div id="create-community-modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Create New Community</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="create-community-form">
+          <div class="form-group">
+            <label for="community-name">Community Name</label>
+            <input type="text" id="community-name" required>
+          </div>
+          <div class="form-group">
+            <label for="community-description">Description</label>
+            <textarea id="community-description" rows="4" required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-outline cancel-modal">Cancel</button>
+            <button type="submit" class="btn-primary">Create Community</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Community Card Template -->
+  <template id="community-card-template">
+    <div class="community-card">
+      <div class="community-icon">
+        <i class="fas fa-users"></i>
+      </div>
+      <div class="community-details">
+        <h4 class="community-name"></h4>
+        <p class="community-description"></p>
+        <div class="community-stats">
+          <span class="member-count"><i class="fas fa-user"></i> <span class="count"></span> members</span>
+        </div>
+      </div>
+      <button class="btn-outline join-community">Join</button>
+    </div>
+  </template>
+
+  <script src="js/communities.js"></script>
+  <script src="js/header.js"></script>
+</body>
+</html>
